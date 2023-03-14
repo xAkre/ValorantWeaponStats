@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+:root {
+    --main-red: #ff4655;
+    --main-background: #171717;
+    --light-background: #262626;
+    --main-heading: #f5f5f5;
+    --main-text: #d4d4d8;
+    --nav-height: 64px;
+    --card-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    --weapon-stat: #0cc1f3;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: var(--main-text);
+}
+
+body {
+    background-color: var(--main-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Comfortaa', display;
+    color: var(--main-heading);
+}
+
+/* Nav */
+
+nav {
+    width: 100%;
+    height: var(--nav-height);
+    border-bottom: 1px solid var(--light-background);
+}
+
+.nav-container {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.logo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container > .logo {
+    height: 50%;
+    user-select: none;
+}
+
+.logo-container > .logo-text {
+    height: 45%;
+    user-select: none;
+}
+
+/* Home Page Main */
+
+.home-main {
+    width: 80%;
+    min-height: calc(100vh - var(--nav-height));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.sliders-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.slider {
+    --slider-index: 0;
+    --slider-items-per-page: 4;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.slider.agent-slider {
+    --slider-items-per-page: 6;
+}
+
+.slider-head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.slider-head > .slider-name {
+    font-size: 24px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.slider-head > .slider-index-indicator {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.slider-head > .slider-index-indicator > .slider-index-tile {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--light-background);
+    transition: background-color 0.5s ease;
+}
+
+.slider-head > .slider-index-indicator > .slider-index-tile.active {
+    background-color: var(--main-red);
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--card-box-shadow);
+    background-color: var(--light-background);
+}
+
+.slider-container > .scroll-button {
+    position: absolute;
+    top: 0;
+    width: 15px;
+    height: 100%;
+    background-color: var(--main-red);
+    z-index: 2;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.slider-container > .scroll-button:hover {
+    opacity: 1;
+    width: 20px;
+}
+
+.slider-container > .prev-page-button {
+    left: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.slider-container > .next-page-button {
+    right: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.slider-container > .slider-content {
+    transform: translateX(calc(var(--slider-index) * -100%));
+    width: calc(100% - 20px);
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(100% / var(--slider-items-per-page));
+    grid-template-rows: 100%;
+    border-radius: 5px;
+    padding: 10px 0;
+    transition: transform 0.5s ease;
+}
+
+.slider-container > .slider-content > .slider-item {
+    background-color: var(--main-background);
+    margin: 0 5px;
+    border-radius: 5px;
+    box-shadow: var(--card-box-shadow);
+    cursor: pointer;
+}
+
+.slider-container > .slider-content > .slider-item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+    padding: 10px;
+    user-select: none;
+    opacity: 0.5;
+    transition: all 0.5s ease;
+}
+
+.slider-container > .slider-content > .slider-item:hover > img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Weapon Stats section */
+
+.weapon-section {
+    width: 80%;
+    min-height: calc(100vh - var(--nav-height));
+    display: none;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 50px;
+    flex-wrap: wrap;
+}
+
+.weapon-image {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 200px;
+    margin-bottom: 100px;
+    margin-top: 70px;
+}
+
+.weapon-image > img {
+    width: 600px;
+    max-width: 90vw;
+}
+
+.weapon-name {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: x-large;
+    margin-bottom: 40px;
+}
+
+.weapon-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.weapon-stat {
+    margin-bottom: 5px;
+    height: 80px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0 50px;
+    background-color: var(--light-background);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.weapon-stat-name {
+    width: 35%;
+    height: 100%;
+    font-size: 22px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.weapon-stat-value {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+    align-items: center;
+    font-size: 22px;
+}
+
+.weapon-stat-lvl {
+    width: 20%;
+    height: 20px;
+    background-color: var(--main-background);
+    border-radius: 5px;
+    box-shadow: var(--card-box-shadow);
+}
+
+.weapon-stat-lvl-marker {
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: var(--light-background);
+    border-radius: 5px;
+    box-shadow: var(--card-box-shadow);
+}
+
+.good {
+    background-color: var(--weapon-stat);
+}
+
+.bad {
+    background-color: var(--main-red);
+}
+
+.weapon-stat-lvl-left,
+.weapon-stat-lvl-right {
+    width: 5%;
+    height: 60px;
+    font-size: 18px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Agent Stats Section */
+
+.agent-section {
+    width: 80%;
+    min-height: calc(100vh - var(--nav-height));
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px 0 50px 0;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.agent-image {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agent-image > img {
+    width: 600px;
+    max-width: 100vw;
+}
+
+.agent-name {
+    font-size: x-large;
+    width: 100%;
+    text-align: center;
+}
+
+.agent-description {
+    width: 80%;
+    padding: 40px 20px;
+    font-size: 20px;
+}
+
+.agent-role {
+    width: 80%;
+    padding: 15px;
+    display: flex;
+    height: 150px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--light-background);
+}
+
+.agent-role > img {
+    width: 70px;
+}
+
+.agent-description-cont > h3 {
+    text-align: center;
+    height: 20%;
+}
+
+.agent-description-cont > p {
+    text-align: left;
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.agent-description-cont {
+    width: 70%;
+    padding: 15px;
+    height: 100%;
+    text-align: right;
+}
+
+.agent-description-cont > h3 {
+    font-size: 20px;
+}
+
+.agent-section h2 {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.agent-abilities {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.agent-abilities > h2 {
+    margin: 80px 0;
+    font-size: 30px;
+}
+
+.agent-ability {
+    width: 100%;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+}
+
+.agent-ability-img {
+    width: fit-content;
+    padding: 0 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 20%;
+}
+
+.agent-ability-img > img {
+    width: 70px;
+}
+
+.agent-ability-description-right,
+.agent-ability-description-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+}
+
+.agent-ability-description-right > p {
+    padding: 10px;
+    text-align: left;
+}
+
+.agent-ability-description-left > p {
+    padding: 10px;
+    text-align: right;
+}
+
+.agent-ability-description-right > h3,
+.agent-ability-description-left > h3 {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
