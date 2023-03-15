@@ -73,7 +73,7 @@ nav {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 60px 0;
 }
 
 .sliders-container {
@@ -317,7 +317,7 @@ nav {
 
 .weapon-stat-lvl-left,
 .weapon-stat-lvl-right {
-    width: 5%;
+    width: 100px;
     height: 60px;
     font-size: 18px;
     font-style: italic;
@@ -335,7 +335,7 @@ nav {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 30px 0 50px 0;
+    padding: 10px 0 50px 0;
     flex-wrap: wrap;
     height: auto;
 }
@@ -372,7 +372,8 @@ nav {
     height: 150px;
     align-items: center;
     justify-content: space-around;
-    background-color: var(--light-background);
+    background-color: var(--main-red);
+    border-radius: 10px;
 }
 
 .agent-role > img {
