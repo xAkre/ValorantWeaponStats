@@ -1,30 +1,30 @@
 const stats = {
     "magazineSize": {
-        "displayName": "Magazine Size", "best": 0, "worst": Infinity,
-        "get": (weapon) => weapon.weaponStats.magazineSize,
+        "displayName": "Magazine Size", "best": 0, "worst": Infinity, "reverse": false,
+        "get": (weapon) => weapon.weaponStats.magazineSize
     },
     "fireRate": {
-        "displayName": "Fire Rate", "best": 0, "worst": Infinity,
+        "displayName": "Fire Rate", "best": 0, "worst": Infinity, "reverse": false,
         "get": (weapon) => weapon.weaponStats.fireRate,
     },
     "runSpeedMultiplier": {
-        "displayName": "Run Speed Multiplier", "best": 0, "worst": Infinity,
+        "displayName": "Run Speed Multiplier", "best": 0, "worst": Infinity, "reverse": false,
         "get": (weapon) => weapon.weaponStats.runSpeedMultiplier,
     },
     "firstBulletAccuracy": {
-        "displayName": "First Bullet Accuracy", "best": 0, "worst": Infinity,
+        "displayName": "First Bullet Accuracy", "best": 0, "worst": Infinity, "reverse": false,
         "get": (weapon) => weapon.weaponStats.firstBulletAccuracy,
     },
     "cost": {
-        "displayName": "Cost", "best": 0, "worst": Infinity,
+        "displayName": "Cost", "best": 0, "worst": Infinity, "reverse": true,
         "get": (weapon) => weapon.shopData.cost,
     },
     "equipTimeSeconds": {
-        "displayName": "Equip Time (s)", "best": 0, "worst": Infinity,
+        "displayName": "Equip Time (s)", "best": 0, "worst": Infinity, "reverse": true,
         "get": (weapon) => weapon.weaponStats.equipTimeSeconds,
     },
     "reloadTimeSeconds": {
-        "displayName": "Reload Time (s)", "best": 0, "worst": Infinity,
+        "displayName": "Reload Time (s)", "best": 0, "worst": Infinity, "reverse": true,
         "get": (weapon) => weapon.weaponStats.reloadTimeSeconds,
     },
 }
@@ -38,7 +38,7 @@ export const setBestAndWorstWeaponStats = (weapons) => {
     });
 };
 
-const bestPercent = (value, stat) => (((value - stat.worst) / (stat.best - stat.worst)) * 100 + '%');
+const bestPercent = (value, stat) => (((value - stat.worst) / (stat.best - stat.worst)) * 100);
 
 const createWeaponStatTile = (stat, statValue) => {
     const weaponStat = document.createElement('div');
@@ -63,11 +63,32 @@ const createWeaponStatTile = (stat, statValue) => {
     weaponStatLvl.classList.add('weapon-stat-lvl');
 
     const weaponStatLvlMarker = document.createElement('div');
-    weaponStatLvlMarker.style = 'width: ' + bestPercent(statValue, stat);
+    weaponStatLvlMarker.style = 'width: ' + bestPercent(statValue, stat) + "%";
     weaponStatLvlMarker.classList.add('weapon-stat-lvl-marker');
+    
+    if (bestPercent(statValue, stat) < 50)
+    {
+        if(stat.reverse)
+        {
+            weaponStatLvlMarker.classList.add('good');
+        }
+        else 
+        {
+            weaponStatLvlMarker.classList.add('bad');
+        }
+    }
+    else
+    {
+        if (stat.reverse) {
+            weaponStatLvlMarker.classList.add('bad');
+        }
+        else
+        {
+            weaponStatLvlMarker.classList.add('good');
+        }
 
-    if (statValue < 4) weaponStatLvlMarker.classList.add('good');
-    else weaponStatLvlMarker.classList.add('bad');
+    }
+
 
     const weaponStatLvlRight = document.createElement('div');
     weaponStatLvlRight.classList.add('weapon-stat-lvl-right');

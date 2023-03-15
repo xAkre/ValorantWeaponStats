@@ -20,6 +20,7 @@
 
 body {
     background-color: var(--main-background);
+    overflow-y: hidden;
 }
 
 h1,
@@ -228,13 +229,13 @@ nav {
     justify-content: center;
     width: auto;
     height: 200px;
+    width: 100%;
     margin-bottom: 100px;
     margin-top: 70px;
 }
 
 .weapon-image > img {
-    width: 600px;
-    max-width: 90vw;
+    object-fit: contain;
 }
 
 .weapon-name {
@@ -428,6 +429,7 @@ nav {
     justify-content: center;
     align-items: center;
     padding: 40px 30px;
+    border-radius: 10px;
 }
 
 .agent-ability-img {
