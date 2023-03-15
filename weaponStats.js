@@ -108,5 +108,7 @@ export const loadWeaponStats = (weapon) => {
     weaponImage.src = weapon.displayIcon;
     weaponImageDiv.appendChild(weaponImage);
 
-    Object.values(stats).forEach((stat) => document.querySelector('.weapon-stats').appendChild(createWeaponStatTile(stat, stat.get(weapon))));
+    Object.values(stats).forEach((stat) => {
+        document.querySelector('.weapon-stats').appendChild(createWeaponStatTile(stat, stat.get(weapon)))
+    });
 };
