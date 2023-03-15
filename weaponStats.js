@@ -65,28 +65,15 @@ const createWeaponStatTile = (stat, statValue) => {
     const weaponStatLvlMarker = document.createElement('div');
     weaponStatLvlMarker.style = 'width: ' + bestPercent(statValue, stat) + "%";
     weaponStatLvlMarker.classList.add('weapon-stat-lvl-marker');
-    
-    if (bestPercent(statValue, stat) < 50)
-    {
-        if(stat.reverse)
-        {
-            weaponStatLvlMarker.classList.add('good');
-        }
-        else 
-        {
-            weaponStatLvlMarker.classList.add('bad');
-        }
-    }
-    else
-    {
-        if (stat.reverse) {
-            weaponStatLvlMarker.classList.add('bad');
-        }
-        else
-        {
-            weaponStatLvlMarker.classList.add('good');
-        }
 
+    if (bestPercent(statValue, stat) < 50) {
+        if (stat.reverse) weaponStatLvlMarker.classList.add('good');
+        else weaponStatLvlMarker.classList.add('bad');
+
+    }
+    else {
+        if (stat.reverse) weaponStatLvlMarker.classList.add('bad');
+        else weaponStatLvlMarker.classList.add('good');
     }
 
 
