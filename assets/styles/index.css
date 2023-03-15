@@ -20,7 +20,7 @@
 
 body {
     background-color: var(--main-background);
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 h1,
